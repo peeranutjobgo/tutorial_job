@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    
+    <record id="equipment_request_action" model="ir.actions.act_window">
+        <field name="name">equipment request list</field>
+        <field name="res_model">equipment.request</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    
+    <record id="equipment_request_view" model="ir.ui.view">
+        <field name="name">equipment.request.tree</field>
+        <field name="model">equipment.request</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name" string="Titie"/>
+                <field name="department" string="Department"/>
+                <field name="state" />
+                <!-- <field name="day_of_return" string = 'date must return'/> -->
+            </tree>
+        </field>
+    </record> 
+
+    <record id="equipment_request_view_form" model="ir.ui.view">
+        <field name="name"> equipment.request.tree.form</field>
+        <field name="model">equipment.request</field>
+        <field name="arch" type="xml">
+            <form >
+                <sheet>
+                    <form>
+                        <header>
+                                <button name="change_state_to_return" type="object" string="return"/>
+                                <button name="change_state_to_canceled" type="object" string="Canceled"/>
+                                <field name="state" widget="statusbar" statusbar_visible="open,posted,confirm"/>
+                        </header>
+                        <h1>
+                            <!-- <field name="tag_ids" widget="many2many_tags"/> -->
+                            <field name="name" string="Title" />
+                            
+                        </h1>
+                            <div>
+                                <group>
+                                    <!-- <field name="state" readonly="true"/> -->
+                                    <field name="date_of_received" readonly="true" string = 'Date will receive this'/> 
+                                    <field name="date_of_return"  readonly="true" string = 'Date will return this' />
+                                </group>
+                            </div>
+                    </form>
+                    <notebook>
+                        <page string="detial">
+                            <group>
+                                <field name="description" />
+                                <field name="day_of_availability" string = 'you can received in'/>
+                                <field name="day_of_return" string = 'you will Return in' />
+                                <field name="urgent_case" string = 'this Urgent ? ' />
+                                <field name="department" />
+                            </group>
+                        </page>
+                        <page string="equipment list">
+                            <field name="equipment_list_ids">
+                                <tree editable="top">
+                                    <field name="name" />
+                                    <field name="quantity" />
+                                    <field name="quantity_unit" />
+                                </tree>
+                            </field>
+                        </page>
+<!--                         
+                        <page string="approver">
+                            <field name="equ_list_id">
+                                <tree>
+                                    <field name="epu_name" />
+                                    <field name="epu_quantity" />
+                                    <field name="epu_quantity_unit" />
+                                </tree>
+                            </field>
+                        </page>
+                         -->
+                    </notebook>
+                </sheet>
+                <!-- 
+                    <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers" groups="base.group_user"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div> 
+            -->
+            </form>
+        </field>
+    </record>
+     
+    
+    <record id="estate_property_search" model="ir.ui.view">
+        <field name="name">equipment.request.tree.search</field>
+        <field name="model">equipment.request</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name='name' />
+                <filter string="state" name="state" domain="[('state', '=', 'New request')]"/>
+            </search>
+        </field>
+    </record>
+</odoo>

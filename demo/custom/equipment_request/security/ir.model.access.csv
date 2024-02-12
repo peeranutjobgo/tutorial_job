@@ -1,2 +1,4 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_equipment_request_equipment_request,equipment_request.equipment_request,model_equipment_request_equipment_request,base.group_user,1,1,1,1
+access_equipment_request_user,access_equipment_request_user,model_equipment_request,base.group_user,1,1,1,0
+access_equipment_request_tag_user,access_equipment_request_tag,model_equipment_request_tag,base.group_user,1,1,1,0
+access_equipment_request_list_user,access_equipment_request_list,model_equipment_request_list,base.group_user,1,1,1,1

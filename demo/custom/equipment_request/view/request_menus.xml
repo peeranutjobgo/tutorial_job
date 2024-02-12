@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+   
+    <menuitem id="equipment_request_root" name="equipment request" sequence="1"
+        />
+    
+    <menuitem id="equipment_request_level_menu" name="equipment request" parent="equipment_request_root" sequence="1" 
+        />
+
+<!-- 
+    <menuitem id="Real_Estate_setting_level_menu" name="setting" parent="Real_Estate_root" sequence="1" 
+        />    
+ -->
+
+
+    <menuitem id="main_equipment_request_action" name="request list" parent="equipment_request_level_menu" action="equipment_request_action" sequence="2"
+        />
+
+    <!-- 
+        <menuitem
+            id="estate_property_type_menu"
+            name="Type"
+            parent="Real_Estate_setting_level_menu"
+            action="estate_property_type_action"
+            sequence="2"
+        />     
+    -->
+
+</odoo>
